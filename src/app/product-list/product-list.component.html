@@ -1,0 +1,20 @@
+<ng-container>
+    <div class="container p-3">
+      <div class="row">
+        <input type="search" [(ngModel)]="searchText" class="form-control" placeholder="Search here..."/>
+      </div>
+        <div class="row p-3">
+            <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of product_list | search: searchText">
+                <div class="card" (click)="goToDetails(item.id)">
+                  <img [src]="item.image" onerror="" class="card-img-top card-height p-2" alt="Product Image">
+                  <div class="card-body">
+                    <h5 class="card-title ellipsis">{{item.title}}</h5>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted"> Price :- {{item.price}} Rs. </small>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

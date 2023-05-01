@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Cart</h2>
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td> <img [src]="item?.image" onerror="" alt="Product Image" class="img-fluid img-height"> </td>
+          <td>{{ item.title }}</td>
+          <td>{{ item.price }}</td>
+          <td>
+            <button class="btn btn-secondary btn-sm mr-2" (click)="decrement(item)">-</button>
+            {{ item.quantity }}
+            <button class="btn btn-secondary btn-sm ml-2" (click)="increment(item)">+</button>
+          </td>
+          <td>{{ (item.price * item.quantity).toFixed(2) }}</td>
+          <td><button class="btn btn-danger btn-sm" (click)="remove(item)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+      <h4>Total: {{ getTotal() }}</h4>
+    </div>
+  </div>
+  
