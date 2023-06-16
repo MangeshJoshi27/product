@@ -15,6 +15,7 @@ export class ApiService implements HttpInterceptor {
     return next.handle(authReq).pipe(
       catchError(error => {
         if (error.status === 408) {
+          console.log('User not authorized ')
           this.router.navigate(['/login']);
         }
         return throwError(error);
